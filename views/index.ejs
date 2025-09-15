@@ -17,8 +17,7 @@
     <div class="container my-5">
       <h1 class="mb-4 text-center">Blog</h1>
 
-      <!-- Post form -->
-      <form action="/new" method="POST" class="mb-5">
+      <form action="/new" method="POST">
         <div class="form-group">
           <input type="text" class="form-control" name="title" placeholder="Enter a title for your post" required>
         </div>
@@ -28,9 +27,8 @@
         <button type="submit" class="btn btn-primary">Create Post</button>
       </form>
 
-      <!-- Posts section -->
       <% if (posts.length === 0) { %>
-        <p class="text-muted text-center">Be the first to make a post!</p>
+        <p>Be the first to make a post!</p>
       <% } else { %>
         <% posts.forEach((post, i) => { %>
           <div class="card mb-3">
