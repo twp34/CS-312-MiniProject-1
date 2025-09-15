@@ -1,18 +1,28 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Edit Post</title>
-  <link rel="stylesheet" href="/styles.css">
-</head>
-<body>
-  <h1>Edit Post</h1>
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <form action="/edit/<%= id %>" method="POST">
-    <input type="text" name="title" value="<%= post.title %>" required>
-    <textarea name="content" required><%= post.content %></textarea>
-    <button type="submit">Save Changes</button>
-  </form>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-  <p><a href="/">Back to Home</a></p>
-</body>
+    <title>Edit Post</title>
+  </head>
+  <body>
+    <h1>Edit Post</h1>
+    <form action="/edit/<%= id %>" method="POST" style="display: flex; flex-direction: column; width: 400px; gap:10px;">
+      <input type="text" name="title" value="<%= post.title %>" required>
+      <textarea name="content" required><%= post.content %></textarea>
+      <button type="submit">Save Changes</button>
+    </form>
+
+    <p><a href="/">Back to Home</a></p>
+
+    <!-- Bootstrap JS + dependencies -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
+  </body>
 </html>
