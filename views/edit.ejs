@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head> <!--tags from the bootstrap-->
     <!-- Required meta tags -->
@@ -12,15 +12,15 @@
   </head>
   <body>
     <h1>Edit Post</h1>
-	 <!--form to create the new blogpost, and input for all the post would need-->
+	 <!--form to modify the blogpost. at first it shows the old data within each field, but can be edited-->
     <form action="/edit/<%= id %>" method="POST" style="display: flex; flex-direction: column; width: 400px; gap:8px;">
       <input type="text" name="author" placeholder="<%= post.author %>" required>
 	  <input type="text" name="title" value="<%= post.title %>" required>
       <textarea name="content" required><%= post.content %></textarea>
-      <button type="submit">Save Changes</button>
+      <button type="submit">Save Changes</button> <!--when the submit button is pressed, again this is sent to server.js to take the place of the old post-->
     </form>
 
-    <p><a href="/">Back to Home</a></p>
+    <p><a href="/">Back to Home</a></p> <!--sends the user back to the home page (instead of the edit page) if this is pressed
 
     <!--other stuff for the bootstrap i used-->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" crossorigin="anonymous"></script>
