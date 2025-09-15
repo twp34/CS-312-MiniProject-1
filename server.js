@@ -24,11 +24,11 @@ app.get("/delete/:id", (req, res) => { //deletes post when button is pressed bas
   res.redirect("/");
 });
 
-app.get("/edit/:id", (req, res) => { 
+app.get("/edit/:id", (req, res) => { //shows the edit form for the one who clicked the edit button
   res.render("edit", { post: posts[req.params.id], id: req.params.id });
 });
 
-app.post("/edit/:id", (req, res) => {
+app.post("/edit/:id", (req, res) => { //actually handes the editting of the previous post, once the editor clicks save on new data
   posts[req.params.id] = { 
   title: req.body.title, 
   content: req.body.content, 
@@ -37,4 +37,4 @@ app.post("/edit/:id", (req, res) => {
   res.redirect("/");
 });
 
-app.listen(3000, () => console.log("Running on http://localhost:3000"));
+app.listen(0, () => console.log("Running on http://localhost:0"));
