@@ -1,59 +1,30 @@
 const express = require("express");
 const app = express();
-const PORT = 3000;
 
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static("public"));
 
-// Temporary array for blog posts
 let posts = [];
 
-// Home route
-app.get("/", (req, res) => {
-    res.render("index", { posts });
-});
-
-app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
-});
+app.get("/", (req, res) => res.render("index", { posts }));
 
 app.post("/new", (req, res) => {
-    const { title, content } = req.body;
-    const newPost = {
-        title,
-        content,
-        date: new Date()
-    };
-    posts.push(newPost);
-    res.redirect("/");
-
+  posts.push({ title: req.body.title, content: req.body.content, date: new Date() });
+  res.redirect("/");
 });
 
 app.get("/delete/:id", (req, res) => {
-    const id = parseInt(req.params.id);
-    if (!isNaN(id) && posts[id]) {
-        posts.splice(id, 1); // remove post at that index
-    }
-    res.redirect("/");
+  posts.splice(req.params.id, 1);
+  res.redirect("/");
 });
 
 app.get("/edit/:id", (req, res) => {
-    const id = parseInt(req.params.id);
-    const post = posts[id];
-    if (post) {
-        res.render("edit", { post, id });
-    } else {
-        res.redirect("/");
-    }
+  res.render("edit", { post: posts[req.params.id], id: req.params.id });
 });
 
 app.post("/edit/:id", (req, res) => {
-    const id = parseInt(req.params.id);
-    if (!isNaN(id) && posts[id]) {
-        posts[id].title = req.body.title;
-        posts[id].content = req.body.content;
-        posts[id].date = new Date(); // optional: update timestamp
-    }
-    res.redirect("/");
+  posts[req.params.id] = { title: req.body.title, content: req.body.content, date: new Date() };
+  res.redirect("/");
 });
+
+app.listen(3000, () => console.log("Running on http://localhost:3000"));
