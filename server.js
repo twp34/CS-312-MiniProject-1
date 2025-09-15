@@ -21,8 +21,8 @@ app.listen(PORT, () => {
 app.post("/new", (req, res) => {
     const { title, content } = req.body;
     const newPost = {
-        title,
-        content,
+        postTitle,
+        postContent,
         date: new Date()
     };
     posts.push(newPost);
