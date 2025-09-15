@@ -10,7 +10,7 @@ app.get("/", (req, res) => res.render("index", { posts }));
 
 app.post("/new", (req, res) => {
   posts.push({
-    author: req.body.author, // NEW
+    author: req.body.author,
     title: req.body.title,
     content: req.body.content,
     date: new Date()
@@ -25,7 +25,7 @@ app.get("/delete/:id", (req, res) => {
 });
 
 app.get("/edit/:id", (req, res) => {
-  res.render("edit", { post: posts[req.params.id], id: req.params.id });
+  res.render("edit", { post: posts[req.params.id], id: req.params.id, author: req.body.author });
 });
 
 app.post("/edit/:id", (req, res) => {
