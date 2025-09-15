@@ -29,7 +29,11 @@ app.get("/edit/:id", (req, res) => {
 });
 
 app.post("/edit/:id", (req, res) => {
-  posts[req.params.id] = { title: req.body.title, content: req.body.content, date: new Date() };
+  posts[req.params.id] = { 
+  title: req.body.title, 
+  content: req.body.content, 
+  author: req.body.author, 
+  date: new Date() };
   res.redirect("/");
 });
 
