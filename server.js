@@ -37,4 +37,4 @@ app.post("/edit/:id", (req, res) => { //actually handes the editting of the prev
   res.redirect("/");
 });
 
-app.listen(0, () => console.log("Running on http://localhost:0")); //start the server
+app.listen(3000, () => console.log("Running on http://localhost:3000")); //start the server
