@@ -24,9 +24,9 @@ app.get("/delete/:id", (req, res) => { //deletes post when button is pressed bas
   res.redirect("/");
 });
 
-//app.get("/edit/:id", (req, res) => { 
-//  res.render("edit", { post: posts[req.params.id], id: req.params.id });
-//});
+app.get("/edit/:id", (req, res) => { 
+  res.render("edit", { post: posts[req.params.id], id: req.params.id });
+});
 
 app.post("/edit/:id", (req, res) => {
   posts[req.params.id] = { 
