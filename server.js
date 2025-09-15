@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
-
 app.set("view engine", "ejs");
+
 app.use(express.urlencoded({ extended: true }));
 
 let posts = [];
@@ -9,7 +9,8 @@ let posts = [];
 app.get("/", (req, res) => res.render("index", { posts }));
 
 app.post("/new", (req, res) => {
-  posts.push({ title: req.body.title, content: req.body.content, date: new Date() });
+  posts.push(
+  { title: req.body.title, content: req.body.content, date: new Date() });
   res.redirect("/");
 });
 
