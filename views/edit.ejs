@@ -12,8 +12,8 @@
   </head>
   <body>
     <h1>Edit Post</h1>
-    <form action="/edit/<%= id %>" method="POST" 
-	  style="display: flex; flex-direction: column; width: 400px; gap:8px;">
+	 <!--form to create the new blogpost, and input for all the post would need-->
+    <form action="/edit/<%= id %>" method="POST" style="display: flex; flex-direction: column; width: 400px; gap:8px;">
       <input type="text" name="author" placeholder="<%= post.author %>" required>
 	  <input type="text" name="title" value="<%= post.title %>" required>
       <textarea name="content" required><%= post.content %></textarea>
