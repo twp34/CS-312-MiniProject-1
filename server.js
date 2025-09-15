@@ -2,13 +2,13 @@ const express = require("express"); //lets use use express
 const app = express(); //creates app
 app.set("view engine", "ejs"); //use expressjs
 
-app.use(express.urlencoded({ extended: true })); //required to read post requests
+app.use(express.urlencoded({ extended: true })); //required to read POST requests
 
 let posts = []; //variable to store posts, viewed on main page of site
 
 app.get("/", (req, res) => res.render("index", { posts })); //renders index.ejs (main blog page)
 
-app.post("/new", (req, res) => { //actually captures data and creates post from input data once button is pressed, also creates an ID for that post
+app.post("/newPost", (req, res) => { //actually captures data and creates post from input data once button is pressed, also creates an ID for that post
   posts.push({
     author: req.body.author,
     title: req.body.title,

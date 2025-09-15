@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <head>
+  <head> <!--tags from the bootstrap-->
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -10,20 +10,20 @@
 
   </head>
   <body>
-    <h1>Blog</h1>
-
-    <form action="/new" method="POST" 
+    <h1>Blog</h1> <!--"Blog" header at the top-->
+	
+    <form action="/newPost" method="POST" <!--form to create the new blogpost, and input for all the post would need-->
       style="display: flex; flex-direction: column; width: 400px; gap:8px;">
       <input type="text" name="author" placeholder="Enter your name" required>
       <input type="text" name="title" placeholder="Enter a title for your post" required>
       <textarea name="content" placeholder="Enter the content of your post" required></textarea>
-      <button type="submit">Create Post</button>
+      <button type="submit">Create Post</button> <!--submit button, when pressed it directly sends the data to server.js to collect the data-->
     </form>
 
-    <% if (posts.length === 0) { %>
-      <p>Be the first to make a post!</p>
+    <% if (posts.length === 0) { %> <!--check if any posts exist-->
+      <p>Be the first to make a post!</p> <!--if not-->
     <% } else { %>
-      <% posts.forEach((post, i) => { %>
+      <% posts.forEach((post, i) => { %> <!--use a for loop to create a divider, then display title, content, author and date, edit and delete buttons-->
         <div>
           <h2><%= post.title %></h2>
           <p><%= post.content %></p>
