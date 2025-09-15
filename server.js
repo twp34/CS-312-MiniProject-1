@@ -9,10 +9,15 @@ let posts = [];
 app.get("/", (req, res) => res.render("index", { posts }));
 
 app.post("/new", (req, res) => {
-  posts.push(
-  { title: req.body.title, content: req.body.content, date: new Date() });
+  posts.push({
+    author: req.body.author, // NEW
+    title: req.body.title,
+    content: req.body.content,
+    date: new Date()
+  });
   res.redirect("/");
 });
+
 
 app.get("/delete/:id", (req, res) => {
   posts.splice(req.params.id, 1);
