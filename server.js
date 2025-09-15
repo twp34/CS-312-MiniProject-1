@@ -25,7 +25,7 @@ app.get("/delete/:id", (req, res) => {
 });
 
 app.get("/edit/:id", (req, res) => {
-  res.render("edit", { post: posts[req.params.id], id: req.params.id, author: req.body.author });
+  res.render("edit", { post: posts[req.params.id], id: req.params.id });
 });
 
 app.post("/edit/:id", (req, res) => {
