@@ -11,7 +11,7 @@
   
 	<body>
 		<h1>Blog</h1> <!--"Blog" header at the top-->
-		<!--form to create the new blogpost, and input for all the post would need-->
+		<!--form to create the new blog post, and input for all the post would need-->
 		<form action="/newPost" method="POST" style="display: flex; flex-direction: column; width:400px">
 			<input type="text" name="author" placeholder="Enter your name" required>
 			<input type="text" name="title" placeholder="Enter a title for your post" required>
@@ -24,9 +24,9 @@
 		<% } else { %><!--if posts have already been made-->
 			<% for (let iteration=0; iteration<blogPosts.length; iteration++) { %>) <!--use a for loop to iterate through the posts array, and display the title, content, author and date/time, as well as edit and delete buttons-->
 				<div>
-				<h2><%= posts[iteration].title %></h2>
-				<p1><%= posts[iteration].content %></p1>
-				<p2>By <%= posts[iteration].author %> on <%= posts[iteration].date.toLocaleString() %></p2>
+				<h2><%= blogPosts[iteration].title %></h2>
+				<p1><%= blogPosts[iteration].content %></p1>
+				<p2>By <%= blogPosts[iteration].author %> on <%= blogPosts[iteration].date.toLocaleString() %></p2>
 				<a href="/edit/<%= iteration %>">Edit</a> 
 				<a href="/delete/<%= iteration %>">Delete</a>
 				<hr>
