@@ -4,7 +4,7 @@ app.set("view engine", "ejs"); //use expressjs
 
 app.use(express.urlencoded({ extended: true })); //required to read POST requests
 
-let posts = []; //variable to store posts, viewed on main page of site
+let posts = []; //array to store posts, viewed on main page of site
 
 app.get("/", (req, res) => res.render("index", { posts })); //renders index.ejs (main blog page)
 
