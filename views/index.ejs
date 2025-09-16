@@ -19,10 +19,10 @@
 			<button type="submit">Create Post</button> <!--submit button, when pressed it directly sends the data to server.js to collect the data-->
 		</form>
 
-		<% if (posts.length === 0) { %> <!--check if any posts exist by checking if the array is empty-->
+		<% if (blogPosts.length === 0) { %> <!--check if any posts exist by checking if the array is empty-->
 			<p>Be the first to make a post! </p> 
 		<% } else { %><!--if posts have already been made-->
-			<% for (let iteration=0; iteration<posts.length; iteration++) { %>) <!--use a for loop to iterate through the posts array, and display the title, content, author and date/time, as well as edit and delete buttons-->
+			<% for (let iteration=0; iteration<blogPosts.length; iteration++) { %>) <!--use a for loop to iterate through the posts array, and display the title, content, author and date/time, as well as edit and delete buttons-->
 				<div>
 				<h2><%= posts[iteration].title %></h2>
 				<p1><%= posts[iteration].content %></p1>
