@@ -7,8 +7,8 @@
 
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" crossorigin="anonymous">
-	</head>
-  
+	</head
+	
 	<body>
 		<h1>Blog</h1> <!--"Blog" header at the top-->
 		<!--form to create the new blogpost, and input for all the post would need-->
@@ -23,16 +23,17 @@
 			<p>Be the first to make a post! </p> 
 		<% } else { %><!--if posts have already been made-->
 			<% let iteration %>
-			<% for (iteration=0; iteration<blogPosts.length; iteration++) { %>) <!--use a for loop to iterate through the posts array, and display the title, content, author and date/time, as well as edit and delete buttons-->
-				<div>
-				<h2><%= blogPosts[iteration].title %></h2>
-				<p1><%= blogPosts[iteration].content %></p1>
-				<p2>By <%= blogPosts[iteration].author %> on <%= blogPosts[iteration].date.toLocaleString() %></p2>
-				<a href="/editPost/<%= iteration %>">Edit</a> 
-				<a href="/deletePostFromBlog/<%= iteration %>">Delete</a>
-				<hr>
-				</div>
-		<% }} %>
+				<% for (iteration=0; iteration<blogPosts.length; iteration++) { %> <!--use a for loop to iterate through the posts array, and display the title, content, author and date/time, as well as edit and delete buttons-->
+					<% if (blogPosts[iteration].skip != true) { %> <!--skips any value that doesnt have skip set to true-->
+						<div>
+						<h2><%= blogPosts[iteration].title %></h2>
+						<p1><%= blogPosts[iteration].content %></p1>
+						<p2>By <%= blogPosts[iteration].author %> on <%= blogPosts[iteration].date.toLocaleString() %></p2>
+						<a href="/editPost/<%= iteration %>">Edit</a> 
+						<a href="/deletePostFromBlog/<%= iteration %>">Delete</a>
+						<hr>
+						</div>
+		<% }}} %>
 
 	<!--other stuff for the bootstrap i used-->
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" crossorigin="anonymous"></script>

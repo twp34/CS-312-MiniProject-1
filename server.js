@@ -7,6 +7,8 @@ let blogPosts = []; //array to store posts, viewed on main page of site
 
 server.get("/", (request, response) => response.render("index", { blogPosts })); //sends blogPosts data to index.ejs
 
+let skip
+
 server.post("/addPostToBlog", (request, response) => { //actually captures data and creates post from input data once button is pressed, also creates an ID for that post
 	blogPosts.push({ author: request.body.author,
 	title: request.body.title,
@@ -16,12 +18,15 @@ server.post("/addPostToBlog", (request, response) => { //actually captures data 
 });
 
 server.get("/deletePostFromBlog/:postIDnumber", (request, response) => { //deletes post when button is pressed based on ID (res)
-	blogPosts.splice(request.params.postIDnumber, 1);
+	blogPosts[request.params.postIDnumber].skip = true; //flags posts that get their delete button clicked at skip
 	response.redirect("/");
 });
 
 server.get("/editPost/:postIDnumber", (request, response) => { //shows the edit form for the one who clicked the edit button
-	response.render("edit", { post: blogPosts[request.params.postIDnumber], id: request.params.postIDnumber });
+	response.render("edit", { post: {title: blogPosts[request.params.postIDnumber].title,
+	content: blogPosts[request.params.postIDnumber].content,
+	author: blogPosts[request.params.postIDnumber].author,
+	date: blogPosts[request.params.postIDnumber].date}, postIDnumber: request.params.postIDnumber });
 });
 
 
