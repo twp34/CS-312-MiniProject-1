@@ -16,7 +16,7 @@ app.post("/newPost", (req, res) => { //actually captures data and creates post f
 	res.redirect("/"); //refreshes page
 });
 
-app.get("/delete/:id", (req, res) => { //deletes post when button is pressed based on ID (res)
+app.get("/delete/:id", (req, res) => { //deletes post when button is pressed based on ID
 	posts.splice(req.params.id, 1);
 	res.redirect("/");
 });
