@@ -1,39 +1,37 @@
 const express = require("express"); //lets use use express
-const app = express(); //creates app
-app.set("view engine", "ejs"); //use expressjs
+const server = express(); //creates the server for express
+server.set("view engine", "ejs"); //use expressjs
+server.use(express.urlencoded({ extended: true })); //required to read POST requests
 
-app.use(express.urlencoded({ extended: true })); //required to read POST requests
+let blogPosts = []; //array to store posts, viewed on main page of site
 
-let posts = []; //array to store posts, viewed on main page of site
+server.get("/", (request, response) => response.render("index", { blogPosts })); //sends blogPosts data to index.ejs
 
-app.get("/", (req, res) => res.render("index", { posts })); //renders index.ejs (main blog page)
-
-app.post("/newPost", (req, res) => { //actually captures data and creates post from input data once button is pressed, also creates an ID for that post
-	posts.push({ author: req.body.author,
-	title: req.body.title,
-	content: req.body.content,
+server.post("/addPostToBlog", (request, response) => { //actually captures data and creates post from input data once button is pressed, also creates an ID for that post
+	blogPosts.push({ author: request.body.author,
+	title: request.body.title,
+	content: request.body.content,
 	date: new Date()});
-	res.redirect("/"); //refreshes page
+	response.redirect("/"); //refreshes page
 });
 
-app.get("/delete/:id", (req, res) => { //deletes post when button is pressed based on ID (res)
-	posts.splice(req.params.id, 1);
-	res.redirect("/");
+server.get("/deletePostFromBlog/:postIDnumber", (request, response) => { //deletes post when button is pressed based on ID (res)
+	blogPosts.splice(request.params.postIDnumber, 1);
+	response.redirect("/");
 });
 
-app.get("/edit/:id", (req, res) => { //shows the edit form for the one who clicked the edit button
-	res.render("edit", { post: posts[req.params.id], id: req.params.id });
+server.get("/editPost/:postIDnumber", (request, response) => { //shows the edit form for the one who clicked the edit button
+	response.render("edit", { post: blogPosts[request.params.postIDnumber], id: request.params.postIDnumber });
 });
 
 
-
-app.post("/edit/:id", (req, res) => { //actually handes the editting of the previous post, once the editor clicks save on new data
-	posts[req.params.id] = { 
-	title: req.body.title, 
-	content: req.body.content, 
-	author: req.body.author, 
+server.post("/editPost/:postIDnumber", (request, response) => { //actually handes the editting of the previous post, once the editor clicks save on new data
+	blogPosts[request.params.postIDnumber] = { 
+	title: request.body.title, 
+	content: request.body.content, 
+	author: request.body.author, 
 	date: new Date() };
-	res.redirect("/");
+	response.redirect("/");
 });
 
-app.listen(3000, () => console.log("Running on http://localhost:3000")); //start the server
+server.listen(3000, () => console.log("Running on http://localhost:3000")); //start the server

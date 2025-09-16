@@ -14,7 +14,7 @@
 		<h1>Edit Post</h1>
 			<!--after clicking edit, user is taken to the form to edit the post. url will be edit/(id)-->
 			<!-- references post.author, post.title etc to display old data in input areas-->
-		<form action="/edit/<%= id %>" method="POST" style="display: flex; flex-direction: column; width:400px">
+		<form action="/editPost/<%= id %>" method="POST" style="display: flex; flex-direction: column; width:400px">
 			<input type="text" name="author" placeholder="<%= post.author %>" required>
 			<input type="text" name="title" value="<%= post.title %>" required>
 			<textarea name="content" required><%= post.content %></textarea>

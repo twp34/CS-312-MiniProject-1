@@ -12,24 +12,24 @@
 	<body>
 		<h1>Blog</h1> <!--"Blog" header at the top-->
 		<!--form to create the new blogpost, and input for all the post would need-->
-		<form action="/newPost" method="POST" style="display: flex; flex-direction: column; width:400px">
+		<form action="/addPostToBlog" method="POST" style="display: flex; flex-direction: column; width:400px">
 			<input type="text" name="author" placeholder="Enter your name" required>
 			<input type="text" name="title" placeholder="Enter a title for your post" required>
 			<textarea name="content" placeholder="Enter the content of your post" required></textarea>
 			<button type="submit">Create Post</button> <!--submit button, when pressed it directly sends the data to server.js to collect the data-->
 		</form>
 
-		<% if (posts.length === 0) { %> <!--check if any posts exist by checking if the array is empty-->
+		<% if (blogPosts.length === 0) { %> <!--check if any posts exist by checking if the array is empty-->
 			<p>Be the first to make a post! </p> 
 		<% } else { %><!--if posts have already been made-->
-			<% let iteration
-			<% for (iteration=0; iteration<posts.length; iteration++) { %>) <!--use a for loop to iterate through the posts array, and display the title, content, author and date/time, as well as edit and delete buttons-->
+			<% let iteration %>
+			<% for (iteration=0; iteration<blogPosts.length; iteration++) { %>) <!--use a for loop to iterate through the posts array, and display the title, content, author and date/time, as well as edit and delete buttons-->
 				<div>
-				<h2><%= posts[iteration].title %></h2>
-				<p1><%= posts[iteration].content %></p1>
-				<p2>By <%= posts[iteration].author %> on <%= posts[iteration].date.toLocaleString() %></p2>
-				<a href="/edit/<%= iteration %>">Edit</a> 
-				<a href="/delete/<%= iteration %>">Delete</a>
+				<h2><%= blogPosts[iteration].title %></h2>
+				<p1><%= blogPosts[iteration].content %></p1>
+				<p2>By <%= blogPosts[iteration].author %> on <%= blogPosts[iteration].date.toLocaleString() %></p2>
+				<a href="/editPost/<%= iteration %>">Edit</a> 
+				<a href="/deletePostFromBlog/<%= iteration %>">Delete</a>
 				<hr>
 				</div>
 		<% }} %>
