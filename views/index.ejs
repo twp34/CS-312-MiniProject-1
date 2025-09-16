@@ -22,11 +22,11 @@
     <% if (posts.length === 0) { %> <!--check if any posts exist by checking if the array is empty-->
       <p>Be the first to make a post!</p> <!--if not-->
     <% } else { %>
-      <% posts.forEach((post, iteration) => { %> <!--use a for loop to iterate through the posts array, and display the title, content, author and date/time, as well as edit and delete buttons-->
+      <% for (let iteration=0; iteration<posts.length;iteration+=1 %> <!--use a for loop to iterate through the posts array, and display the title, content, author and date/time, as well as edit and delete buttons-->
         <div>
-          <h2><%= post.title %></h2>
-          <p><%= post.content %></p>
-          <p>By <%= post.author %> on <%= post.date.toLocaleString() %></p>
+          <h2><%= posts[iteration].title %></h2>
+          <p><%= posts[iteration].content %></p>
+          <p>By <%= posts[iteration].author %> on <%= posts[iteration].date.toLocaleString() %></p>
           <a href="/edit/<%= iteration %>">Edit</a> 
           <a href="/delete/<%= iteration %>">Delete</a>
           <hr>
