@@ -1,38 +1,38 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head> <!--tags from the bootstrap-->
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<head> <!--tags from the bootstrap-->
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" crossorigin="anonymous">
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" crossorigin="anonymous">
+	</head>
+  
+	<body>
+		<h1>Blog</h1> <!--"Blog" header at the top-->
+		<!--form to create the new blogpost, and input for all the post would need-->
+		<form action="/newPost" method="POST" style="display: flex; flex-direction: column; width:400px">
+			<input type="text" name="author" placeholder="Enter your name" required>
+			<input type="text" name="title" placeholder="Enter a title for your post" required>
+			<textarea name="content" placeholder="Enter the content of your post" required></textarea>
+			<button type="submit">Create Post</button> <!--submit button, when pressed it directly sends the data to server.js to collect the data-->
+		</form>
 
-  </head>
-  <body>
-    <h1>Blog</h1> <!--"Blog" header at the top-->
-	 <!--form to create the new blogpost, and input for all the post would need-->
-    <form action="/newPost" method="POST" style="display: flex; flex-direction: column; width:400px"">
-      <input type="text" name="author" placeholder="Enter your name" required>
-      <input type="text" name="title" placeholder="Enter a title for your post" required>
-      <textarea name="content" placeholder="Enter the content of your post" required></textarea>
-      <button type="submit">Create Post</button> <!--submit button, when pressed it directly sends the data to server.js to collect the data-->
-    </form>
-
-    <% if (posts.length === 0) { %> <!--check if any posts exist by checking if the array is empty-->
-      <p>Be the first to make a post!</p> <!--if not-->
-    <% } else { %>
-      <% for (let iteration=0;iteration < posts.length;iteration++) { %>) <!--use a for loop to iterate through the posts array, and display the title, content, author and date/time, as well as edit and delete buttons-->
-		<div>
-          <h2><%= posts[iteration].title %></h2>
-          <p><%= posts[iteration].content %></p>
-          <p>By <%= posts[iteration].author %> on <%= posts[iteration].date.toLocaleString() %></p>
-          <a href="/edit/<%= iteration %>">Edit</a> 
-          <a href="/delete/<%= iteration %>">Delete</a>
-          <hr>
-        </div>
-      <% } %>
-    <% } %>
+		<% if (posts.length === 0) { %> <!--check if any posts exist by checking if the array is empty-->
+			<p>Be the first to make a post! </p> 
+		<% } else { %><!--if posts have already been made-->
+			<% for (let iteration=0; iteration<posts.length; iteration++) { %>) <!--use a for loop to iterate through the posts array, and display the title, content, author and date/time, as well as edit and delete buttons-->
+				<div>
+				<h2><%= posts[iteration].title %></h2>
+				<p1><%= posts[iteration].content %></p1>
+				<p2>By <%= posts[iteration].author %> on <%= posts[iteration].date.toLocaleString() %></p2>
+				<a href="/edit/<%= iteration %>">Edit</a> 
+				<a href="/delete/<%= iteration %>">Delete</a>
+				<hr>
+				</div>
+			<% } %>
+		<% } %>
 
 	<!--other stuff for the bootstrap i used-->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" crossorigin="anonymous"></script>

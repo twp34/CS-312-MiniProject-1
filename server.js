@@ -9,8 +9,7 @@ let posts = []; //array to store posts, viewed on main page of site
 app.get("/", (req, res) => res.render("index", { posts })); //renders index.ejs (main blog page)
 
 app.post("/newPost", (req, res) => { //actually captures data and creates post from input data once button is pressed, also creates an ID for that post
-  posts.push({
-    author: req.body.author,
+  posts.push({ author: req.body.author,
     title: req.body.title,
     content: req.body.content,
     date: new Date()
